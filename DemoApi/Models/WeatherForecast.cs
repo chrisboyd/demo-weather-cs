@@ -1,9 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DemoApi.Models;
 
 public class WeatherForecast
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; init; }
-    public DateTime Date { get; set; }
+    public string Date { get; set; }
 
     public int TemperatureC { get; set; }
 

@@ -1,28 +1,33 @@
-﻿using DemoApi.Models;
+﻿using System.Globalization;
+using DemoApi.Data;
+using DemoApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoApi.Repository;
 
 public class WeatherRepository : IWeatherRepository
 {
+    private readonly ApplicationDbContext _context;
+
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
     private static List<WeatherForecast> data;
 
-    public WeatherRepository()
+    public WeatherRepository(ApplicationDbContext context)
     {
-        data = new List<WeatherForecast>();
-        data.AddRange(Enumerable.Range(1, 5).Select(index => new WeatherForecast
-       {
-           Date = DateTime.Now.AddDays(index),
-           TemperatureC = Random.Shared.Next(-20, 55),
-           Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-       }));
-        
+        _context = context;
+        //  data = new List<WeatherForecast>(); 
+       //  data.AddRange(Enumerable.Range(1, 5).Select(index => new WeatherForecast
+       // {
+       //     Date = DateTime.Now.AddDays(index).ToString(CultureInfo.InvariantCulture),
+       //     TemperatureC = Random.Shared.Next(-20, 55),
+       //     Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+       // }));
     }
-    public List<WeatherForecast> GetAll()
+    public async Task<WeatherForecast[]> GetAll()
     {
-        return data;
+        return await _context.WeatherForecasts.ToArrayAsync();
     }
 }

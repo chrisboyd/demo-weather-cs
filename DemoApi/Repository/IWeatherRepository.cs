@@ -4,5 +4,5 @@ namespace DemoApi.Repository;
 
 public interface IWeatherRepository
 {
-    public List<WeatherForecast> GetAll();
+    public Task<WeatherForecast[]> GetAll();
 }
