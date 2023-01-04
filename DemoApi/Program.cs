@@ -1,3 +1,9 @@
+using DemoApi.Data;
+using DemoApi.Models;
+using DemoApi.Repository;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IWeatherRepository, WeatherRepository>();
+// builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Config)).
 
 var app = builder.Build();
 

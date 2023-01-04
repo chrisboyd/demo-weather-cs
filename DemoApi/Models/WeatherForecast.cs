@@ -2,6 +2,7 @@ namespace DemoApi.Models;
 
 public class WeatherForecast
 {
+    public int Id { get; init; }
     public DateTime Date { get; set; }
 
     public int TemperatureC { get; set; }
