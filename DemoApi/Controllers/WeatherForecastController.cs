@@ -18,7 +18,7 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    public Task<WeatherForecast[]> Get()
+    public List<WeatherForecast> Get()
     {
         _logger.LogInformation("GET request");
         return _weatherRepository.GetAll();
