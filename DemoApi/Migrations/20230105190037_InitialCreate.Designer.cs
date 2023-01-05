@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230104222322_InitialCreate")]
+    [Migration("20230105190037_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -35,6 +35,9 @@ namespace DemoApi.Migrations
                     b.Property<string>("Date")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Overcast")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");

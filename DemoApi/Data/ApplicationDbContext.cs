@@ -6,7 +6,7 @@ namespace DemoApi.Data;
 public class ApplicationDbContext : DbContext
 {
     public DbSet<WeatherForecast> WeatherForecasts { get; set; }
-    
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
@@ -20,7 +20,8 @@ public class ApplicationDbContext : DbContext
     //             Id = 1,
     //             Date = DateTime.Now.ToString(),
     //             Summary = "is not hot",
-    //             TemperatureC = 5
+    //             TemperatureC = 5,
+    //             Overcast = true
     //         });
     // }
 }

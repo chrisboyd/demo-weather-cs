@@ -18,7 +18,8 @@ namespace DemoApi.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TemperatureC = table.Column<int>(type: "int", nullable: false),
-                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Overcast = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
